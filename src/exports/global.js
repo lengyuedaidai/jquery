@@ -11,7 +11,12 @@ var
 
 	// Map over the $ in case of overwrite
 	_$ = window.$;
-
+/**
+ * 防止$或者jQuery变量被占用，修改jQuery的变量名；
+ * var test = $.noConflict();
+ * $ = "123";
+ * console.log(test("#div"));
+ */
 jQuery.noConflict = function( deep ) {
 	if ( window.$ === jQuery ) {
 		window.$ = _$;

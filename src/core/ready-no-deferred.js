@@ -5,7 +5,9 @@ define( [
 ], function( jQuery, document, isFunction ) {
 
 "use strict";
-
+/**
+ * 使用回调队列实现ready状态管理
+ */
 var readyCallbacks = [],
 	whenReady = function( fn ) {
 		readyCallbacks.push( fn );

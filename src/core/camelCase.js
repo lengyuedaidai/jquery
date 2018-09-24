@@ -1,9 +1,11 @@
 define( [], function() {
 
 "use strict";
-
+/**
+ * 将-格式转为驼峰格式
+ */
 // Matches dashed string for camelizing
-var rmsPrefix = /^-ms-/,
+var rmsPrefix = /^-ms-/,//对于IE浏览器特殊处理
 	rdashAlpha = /-([a-z])/g;
 
 // Used by camelCase as callback to replace()

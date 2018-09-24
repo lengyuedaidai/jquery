@@ -32,7 +32,7 @@ define( [
 	"./exports/amd",
 	"./exports/global"
 ], function( jQuery ) {
-
+//入口函数
 "use strict";
 
 return jQuery;

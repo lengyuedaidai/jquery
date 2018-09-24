@@ -4,10 +4,17 @@ define( [
 	"../core/readyException",
 	"../deferred"
 ], function( jQuery, document ) {
-
+/**
+ *只有引入此模块，就会对document.readyState进行判断，如果document已经加载完毕了，
+ * 则异步立即调用jQuery.ready方法，
+ * 如果document未加载完毕，则监听DomContentLoaded事件，和window的load事件，
+ * 通过completed回调函数，清除监听事件，并且调用jQuery.ready方法
+ * 监听DomContentLoaded事件
+ */
 "use strict";
 
 // The deferred used on DOM ready
+//延迟加载 用于查看DOM是否就绪
 var readyList = jQuery.Deferred();
 
 jQuery.fn.ready = function( fn ) {
@@ -35,6 +42,9 @@ jQuery.extend( {
 	readyWait: 1,
 
 	// Handle when the DOM is ready
+	/**
+	 * wait boolean 是否要延迟执行
+	 */
 	ready: function( wait ) {
 
 		// Abort if there are pending holds or we're already ready
@@ -51,6 +61,7 @@ jQuery.extend( {
 		}
 
 		// If there are functions bound, to execute
+		//ready完成，执行回调，this指向document，参数为jQuery
 		readyList.resolveWith( document, [ jQuery ] );
 	}
 } );
